@@ -3,116 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صواريخ معاذ | ولعها في رمضان</title>
+    <title>صواريخ الزوز | ملوك الأكشن</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #FFD700;
-            --accent: #FF4500;
-            --bg: #0a0a1a;
-            --card-bg: #16162d;
+            --primary: #FFD700; /* ذهبي */
+            --accent: #FF3300; /* أحمر ناري فاقع */
+            --bg-dark: #0a0000; /* أسود محمر */
+            --bg-fire: linear-gradient(45deg, #1a0000, #330000); /* خلفية نارية خفيفة */
+            --card-bg: #1a0505;
             --text: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
+        body { 
+            background: var(--bg-fire); 
+            color: var(--text); 
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
 
         /* الهيدر */
         header {
-            background: rgba(10, 10, 26, 0.95);
+            background: rgba(10, 0, 0, 0.95);
             padding: 15px 20px;
             position: fixed; width: 100%; top: 0; z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 0 25px rgba(255, 51, 0, 0.3);
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .logo { font-size: 1.5rem; font-weight: 900; color: var(--primary); }
-        .logo i { color: var(--accent); }
+        /* تعديل اللوجو */
+        .logo { font-size: 1.6rem; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .logo i { color: var(--accent); font-size: 2rem; filter: drop-shadow(0 0 5px var(--accent)); }
 
-        /* الهيرو */
+        /* الهيرو (الواجهة الرئيسية) */
         .hero {
-            min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: radial-gradient(circle at center, #2a1a4a 0%, #0a0a1a 100%);
-            padding-top: 80px; padding-bottom: 40px;
+            min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+            /* خلفية نارية أقوى في الهيرو */
+            background: radial-gradient(circle at center, #4a0000 0%, #0a0000 80%);
+            padding-top: 100px; padding-bottom: 40px;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 15px; text-shadow: 0 0 20px rgba(255, 69, 0, 0.6); }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 15px; text-shadow: 0 0 25px rgba(255, 51, 0, 0.8); line-height: 1.3; }
         .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.3rem; color: #ccc; margin-bottom: 40px; max-width: 600px; }
+
+        /* أزرار الهيرو الجديدة */
+        .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
         .cta-btn {
-            background: var(--accent); color: white; padding: 12px 35px; font-size: 1.2rem; font-weight: bold;
-            border-radius: 50px; text-decoration: none; transition: 0.3s; display: inline-block;
-            box-shadow: 0 0 15px var(--accent);
+            padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
+            border-radius: 50px; text-decoration: none; transition: 0.3s; display: inline-flex;
+            align-items: center; gap: 10px; cursor: pointer;
         }
-        .cta-btn:hover { transform: scale(1.05); background: #ff2a00; }
+        /* الزرار الرئيسي (العروض) */
+        .main-btn {
+            background: var(--accent); color: white; border: none;
+            box-shadow: 0 0 20px rgba(255, 51, 0, 0.5);
+        }
+        .main-btn:hover { transform: translateY(-5px); background: #ff1100; box-shadow: 0 0 30px rgba(255, 51, 0, 0.8); }
+        /* الزرار الثانوي (العنوان) */
+        .secondary-btn {
+            background: transparent; color: var(--primary); border: 2px solid var(--accent);
+        }
+        .secondary-btn:hover { background: var(--accent); color: white; transform: translateY(-5px); }
+
 
         /* المنتجات */
-        .products { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--primary); }
+        .products { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { 
+            text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary); 
+            text-shadow: 0 0 10px var(--accent);
+            position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
+        }
+        /* خط ناري تحت العنوان */
+        .section-title::after {
+            content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+            width: 80px; height: 3px; background: var(--accent); box-shadow: 0 0 10px var(--accent);
+        }
         
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
         }
 
         .card {
             background: var(--card-bg); border-radius: 15px; overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.1); transition: 0.3s; position: relative;
+            border: 1px solid rgba(255, 51, 0, 0.2); transition: 0.3s; position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 10px 25px rgba(255, 51, 0, 0.2); }
 
         /* بادج الخصم */
         .sale-badge {
             position: absolute; top: 10px; left: 10px;
-            background: #ff0000; color: white; padding: 5px 10px;
+            background: var(--accent); color: white; padding: 5px 10px;
             border-radius: 5px; font-weight: bold; font-size: 0.8rem; z-index: 2;
+            box-shadow: 0 0 10px var(--accent);
         }
 
-        .card img { width: 100%; height: 280px; object-fit: cover; border-bottom: 1px solid #333; }
+        .card img { width: 100%; height: 280px; object-fit: cover; border-bottom: 2px solid rgba(255, 51, 0, 0.1); }
 
         .card-content { padding: 15px; text-align: center; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 5px; color: #fff; }
-        .card p { font-size: 0.9rem; color: #aaa; margin-bottom: 10px; min-height: 40px;}
+        .card h3 { font-size: 1.3rem; margin-bottom: 5px; color: var(--primary); }
+        .card p { font-size: 0.9rem; color: #bbb; margin-bottom: 10px; min-height: 40px;}
 
         /* تنسيق السعر */
         .price-box { margin: 10px 0; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .old-price { text-decoration: line-through; color: #777; font-size: 1rem; }
-        .new-price { color: var(--primary); font-size: 1.6rem; font-weight: 900; }
+        .new-price { color: var(--accent); font-size: 1.7rem; font-weight: 900; text-shadow: 0 0 5px rgba(255, 51, 0, 0.3); }
 
         .buy-btn {
-            background: transparent; border: 2px solid var(--primary); color: var(--primary);
-            padding: 8px 0; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;
-            transition: 0.3s; font-size: 1rem;
+            background: transparent; border: 2px solid var(--accent); color: var(--accent);
+            padding: 10px 0; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;
+            transition: 0.3s; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .buy-btn:hover { background: var(--primary); color: #000; }
+        .buy-btn:hover { background: var(--accent); color: white; box-shadow: 0 0 15px var(--accent); }
 
         /* الفوتر والعنوان */
         footer { 
             text-align: center; 
-            padding: 40px 20px; 
-            background: #050510; 
-            margin-top: 40px; 
+            padding: 50px 20px; 
+            background: #0a0000; 
+            margin-top: 60px; 
             color: #777; 
-            border-top: 1px solid #333;
+            border-top: 3px solid var(--accent);
+            /* خلفية نارية للفوتر */
+            background-image: linear-gradient(to top, #1a0000, #0a0000);
         }
         
         .address-box {
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            margin-bottom: 25px; color: var(--primary); font-size: 1.3rem; font-weight: bold;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
         }
         
-        .address-box i { color: var(--accent); font-size: 1.5rem; animation: bounce 2s infinite;}
+        .address-icon-container {
+            width: 60px; height: 60px; background: var(--accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px var(--accent); animation: pulse 2s infinite;
+        }
+        .address-icon-container i { color: white; font-size: 1.8rem; }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 51, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); }
+        }
+
+        /* تحسينات للموبايل */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .cta-btn { padding: 10px 25px; font-size: 1rem; }
+            .section-title { font-size: 2rem; }
         }
 
     </style>
@@ -121,21 +162,29 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo"><i class="fa-solid fa-rocket"></i> صواريخ معاذ</div>
-            <a href="#products" class="cta-btn" style="padding: 8px 20px; font-size: 0.9rem;">العروض</a>
+            <div class="logo">
+                <i class="fa-solid fa-burst"></i> صواريخ الزوز
+            </div>
+            <a href="#products" class="cta-btn main-btn" style="padding: 8px 20px; font-size: 0.9rem; box-shadow: none;">العروض</a>
         </div>
     </header>
 
     <section class="hero">
-        <div>
-            <h1>رمضانك ولعان مع <br><span>صواريخ معاذ</span></h1>
-            <p>أقوى عروض الصواريخ في مصر 💣</p>
-            <a href="#products" class="cta-btn">شوف الضرب <i class="fa-solid fa-fire"></i></a>
+        <h1>أقوى صواريخ في مصر..<br><span>فرحتك تبدأ هنا!</span></h1>
+        <p>ملوك الأكشن والأسعار التنافسية.. الزوز وصل يا بشر 💣</p>
+        
+        <div class="hero-btns">
+            <a href="#products" class="cta-btn main-btn">
+                اتفرج على العروض <i class="fa-solid fa-fire-flame-curved"></i>
+            </a>
+            <a href="#footer-address" class="cta-btn secondary-btn">
+                عنوان المحل <i class="fa-solid fa-map-location-dot"></i>
+            </a>
         </div>
     </section>
 
     <section id="products" class="products">
-        <h2 class="section-title">عروض الدمار الشامل 🔥</h2>
+        <h2 class="section-title">عروض الضرب والهرب 🔥</h2>
         <div class="grid">
 
             <div class="card">
@@ -276,42 +325,45 @@
                 </div>
             </div>
 
-            <div class="card" style="border-color: var(--accent);">
-                <span class="sale-badge" style="background: var(--primary); color: #000;">عرض الموسم</span>
+            <div class="card" style="border-color: var(--accent); box-shadow: 0 0 15px var(--accent);">
+                <span class="sale-badge" style="background: var(--primary); color: #000; box-shadow: none;">عرض الموسم</span>
                 <img src="https://i.postimg.cc/WpwnNfN2/IMG-20260205-WA0015.jpg" alt="عرض الميكس">
                 <div class="card-content">
-                    <h3>عرض ميكس العظمة</h3>
+                    <h3>عرض ميكس الزوز</h3>
                     <p>خرطوشة كينج + بابجي + ميمو</p>
                     <div class="price-box">
                         <span class="old-price">330 ج.م</span>
-                        <span class="new-price">250 ج.م</span>
+                        <span class="new-price" style="font-size: 2rem;">250 ج.م</span>
                     </div>
-                    <button class="buy-btn" style="background: var(--primary); color: #000;" onclick="order('عرض الميكس الكبير', 250)">اطلب العرض <i class="fa-brands fa-whatsapp"></i></button>
+                    <button class="buy-btn" style="background: var(--accent); color: white;" onclick="order('عرض الميكس الكبير', 250)">اطلب العرض <i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <footer>
+    <footer id="footer-address">
         <div class="address-box">
-            <i class="fa-solid fa-location-dot"></i>
+            <div class="address-icon-container">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
             <span>شارع الروبي - ترسا - الطالبية</span>
         </div>
-        <p>صواريخ معاذ - 2024 ©</p>
+        <p>صواريخ الزوز - ملوك الأكشن 2024 ©</p>
     </footer>
 
     <script>
         function order(product, price) {
             // ==========================================
-            // رقمك متسجل هنا (مفتاح مصر 20 موجود)
-            let phone = "201114673080"; 
+            // رقمك متسجل هنا
+            let phone = "201114672635"; 
             // ==========================================
             
-            let msg = `السلام عليكم يا معاذ، عايز أطلب *${product}* بسعر ${price} جنيه.`;
+            // تم تعديل الاسم في الرسالة لـ "الزوز"
+            let msg = `السلام عليكم يا زوز، عايز أطلب *${product}* بسعر ${price} جنيه.`;
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
     </html>
-    
+                    
