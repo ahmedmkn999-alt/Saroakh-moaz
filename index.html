@@ -9,285 +9,276 @@
     
     <style>
         :root {
-            --primary: #FFD700; /* ذهبي */
-            --accent: #FF4500; /* برتقالي ناري */
-            --bg: #0a0a1a; /* كحلي غامق جداً */
+            --primary: #FFD700;
+            --accent: #FF4500;
+            --bg: #0a0a1a;
             --card-bg: #16162d;
             --text: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        /* تنسيق الهيدر */
+        /* الهيدر */
         header {
-            background: rgba(10, 10, 26, 0.9);
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            background: rgba(10, 10, 26, 0.95);
+            padding: 15px 20px;
+            position: fixed; width: 100%; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--primary);
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
         }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--primary); }
         .logo i { color: var(--accent); }
 
-        /* قسم الهيرو (الواجهة الرئيسية) */
+        /* الهيرو */
         .hero {
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a3a 0%, #0a0a1a 100%);
-            padding-top: 80px;
-            position: relative;
+            min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: radial-gradient(circle at center, #2a1a4a 0%, #0a0a1a 100%);
+            padding-top: 80px; padding-bottom: 40px;
         }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
-        }
-
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; text-shadow: 0 0 20px rgba(255, 69, 0, 0.6); }
         .hero h1 span { color: var(--primary); }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: #ccc;
-            margin-bottom: 40px;
-        }
-
         .cta-btn {
-            background: var(--accent);
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: 0.3s;
+            background: var(--accent); color: white; padding: 12px 35px; font-size: 1.2rem; font-weight: bold;
+            border-radius: 50px; text-decoration: none; transition: 0.3s; display: inline-block;
             box-shadow: 0 0 15px var(--accent);
-            display: inline-block;
         }
+        .cta-btn:hover { transform: scale(1.05); background: #ff2a00; }
 
-        .cta-btn:hover {
-            transform: scale(1.05);
-            background: #ff2a00;
-            box-shadow: 0 0 30px var(--accent);
-        }
-
-        /* قسم المنتجات */
-        .products {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: var(--primary);
-        }
-
+        /* المنتجات */
+        .products { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; color: var(--primary); }
+        
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            transition: 0.3s;
-            position: relative;
+            background: var(--card-bg); border-radius: 15px; overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.1); transition: 0.3s; position: relative;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); }
+
+        /* بادج الخصم */
+        .sale-badge {
+            position: absolute; top: 10px; left: 10px;
+            background: #ff0000; color: white; padding: 5px 10px;
+            border-radius: 5px; font-weight: bold; font-size: 0.8rem; z-index: 2;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .card img { width: 100%; height: 280px; object-fit: cover; border-bottom: 1px solid #333; }
 
-        .card-img-placeholder {
-            height: 250px;
-            background: #2a2a4a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 3rem;
-        }
+        .card-content { padding: 15px; text-align: center; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 5px; color: #fff; }
+        .card p { font-size: 0.9rem; color: #aaa; margin-bottom: 10px; min-height: 40px;}
 
-        /* هنا هتستبدل الـ div بصورة حقيقية لاحقاً */
-        /* img { width: 100%; height: 250px; object-fit: cover; } */
-
-        .card-content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 1.8rem;
-            color: var(--primary);
-            font-weight: bold;
-            display: block;
-            margin-bottom: 15px;
-        }
+        /* تنسيق السعر */
+        .price-box { margin: 10px 0; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .old-price { text-decoration: line-through; color: #777; font-size: 1rem; }
+        .new-price { color: var(--primary); font-size: 1.6rem; font-weight: 900; }
 
         .buy-btn {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 10px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            transition: 0.3s;
+            background: transparent; border: 2px solid var(--primary); color: var(--primary);
+            padding: 8px 0; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;
+            transition: 0.3s; font-size: 1rem;
         }
+        .buy-btn:hover { background: var(--primary); color: #000; }
 
-        .buy-btn:hover {
-            background: var(--primary);
-            color: #000;
-        }
-
-        .buy-btn i { margin-left: 8px; }
-
-        /* الفوتر */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #050510;
-            margin-top: 50px;
-            border-top: 1px solid #333;
-        }
-
-        /* تأثيرات بسيطة للموبايل */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
-        }
+        footer { text-align: center; padding: 30px; background: #050510; margin-top: 40px; color: #777; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="nav-container">
-            <div class="logo">
-                <i class="fa-solid fa-rocket"></i> صواريخ معاذ
-            </div>
-            <a href="#products" class="cta-btn" style="padding: 10px 20px; font-size: 1rem;">اطلب الآن</a>
+            <div class="logo"><i class="fa-solid fa-rocket"></i> صواريخ معاذ</div>
+            <a href="#products" class="cta-btn" style="padding: 8px 20px; font-size: 0.9rem;">العروض</a>
         </div>
     </header>
 
     <section class="hero">
         <div>
             <h1>رمضانك ولعان مع <br><span>صواريخ معاذ</span></h1>
-            <p>أقوى تشكيلة صواريخ، بومب، وألعاب نارية بأرخص سعر في مصر</p>
-            <a href="#products" class="cta-btn">شوف العروض <i class="fa-solid fa-fire"></i></a>
+            <p>أقوى عروض الصواريخ في مصر 💣</p>
+            <a href="#products" class="cta-btn">شوف الضرب <i class="fa-solid fa-fire"></i></a>
         </div>
     </section>
 
     <section id="products" class="products">
-        <h2 class="section-title">عروض الضرب والهرب 💣</h2>
-        
+        <h2 class="section-title">عروض الدمار الشامل 🔥</h2>
         <div class="grid">
+
             <div class="card">
-                <div class="card-img-placeholder"><i class="fa-solid fa-box-open"></i></div>
+                <span class="sale-badge">خصم 20%</span>
+                <img src="https://i.postimg.cc/SKS1qF8x/IMG-20260205-WA0004.jpg" alt="صاروخ بابجي">
                 <div class="card-content">
-                    <h3>بوكس "السهرة صباحي"</h3>
-                    <p style="color: #aaa; margin-bottom: 10px;">تشكيلة بومب وصواريخ صفارة للأطفال</p>
-                    <span class="price">150 ج.م</span>
-                    <button class="buy-btn" onclick="orderWhatsApp('بوكس السهرة صباحي', 150)">
-                        اطلب واتساب <i class="fa-brands fa-whatsapp"></i>
-                    </button>
+                    <h3>صاروخ بابجي</h3>
+                    <p>صوت عالي جداً لمحبي الأكشن</p>
+                    <div class="price-box">
+                        <span class="old-price">10 ج.م</span>
+                        <span class="new-price">8 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('صاروخ بابجي', 8)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img-placeholder"><i class="fa-solid fa-explosion"></i></div>
+                <span class="sale-badge">سعر لقطة</span>
+                <img src="https://i.postimg.cc/SxD76XXB/IMG-20260205-WA0005.jpg" alt="KO 24">
                 <div class="card-content">
-                    <h3>بوكس "الدمار الشامل"</h3>
-                    <p style="color: #aaa; margin-bottom: 10px;">صواريخ 8 طلقة وبازوكا وكعك - للقلبهم ميت</p>
-                    <span class="price">450 ج.م</span>
-                    <button class="buy-btn" onclick="orderWhatsApp('بوكس الدمار الشامل', 450)">
-                        اطلب واتساب <i class="fa-brands fa-whatsapp"></i>
-                    </button>
+                    <h3>صاروخ KO 24</h3>
+                    <p>الصاروخ الشعبي الأول</p>
+                    <div class="price-box">
+                        <span class="new-price">5 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('صاروخ KO 24', 5)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-img-placeholder"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <span class="sale-badge">وفر 2 جنيه</span>
+                <img src="https://i.postimg.cc/ry14Gd3g/IMG-20260205-WA0009.jpg" alt="صاروخ Boom">
                 <div class="card-content">
-                    <h3>عرض "فرحة العيلة"</h3>
-                    <p style="color: #aaa; margin-bottom: 10px;">ألعاب نارية ألوان وشرارة آمنة للتصوير</p>
-                    <span class="price">300 ج.م</span>
-                    <button class="buy-btn" onclick="orderWhatsApp('عرض فرحة العيلة', 300)">
-                        اطلب واتساب <i class="fa-brands fa-whatsapp"></i>
-                    </button>
+                    <h3>صاروخ BOOM</h3>
+                    <p>انفجار قوي وصوت مميز</p>
+                    <div class="price-box">
+                        <span class="old-price">10 ج.م</span>
+                        <span class="new-price">8 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('صاروخ BOOM', 8)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
                 </div>
             </div>
+
+            <div class="card">
+                <span class="sale-badge">عرض خاص</span>
+                <img src="https://i.postimg.cc/VvmdZR25/IMG-20260205-WA0008.jpg" alt="صاروخ حجاب">
+                <div class="card-content">
+                    <h3>صاروخ حجاب</h3>
+                    <p>مثلثات الرعب - 4 قطع</p>
+                    <div class="price-box">
+                        <span class="old-price">5 ج.م</span>
+                        <span class="new-price">4 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('صاروخ حجاب', 4)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="sale-badge">الأكثر مبيعاً</span>
+                <img src="https://i.postimg.cc/xCydmm8v/IMG-20260205-WA0007.jpg" alt="صاروخ النووي">
+                <div class="card-content">
+                    <h3>صاروخ النووي</h3>
+                    <p>للأماكن المفتوحة فقط! دمار</p>
+                    <div class="price-box">
+                        <span class="old-price">15 ج.م</span>
+                        <span class="new-price">12 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('صاروخ النووي', 12)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="sale-badge">عرض</span>
+                <img src="https://i.postimg.cc/3JwwydTp/IMG-20260205-WA0006.jpg" alt="Love Pik">
+                <div class="card-content">
+                    <h3>صاروخ Love Pik</h3>
+                    <p>صغير بس يحير</p>
+                    <div class="price-box">
+                        <span class="old-price">5 ج.م</span>
+                        <span class="new-price">4 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('صاروخ Love Pik', 4)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="sale-badge">وفر 20 جنيه</span>
+                <img src="https://i.postimg.cc/QMgDY3DK/IMG-20260205-WA0011.jpg" alt="عرض علبة 6">
+                <div class="card-content">
+                    <h3>علبة التوفير (6 صواريخ)</h3>
+                    <p>عرض الصحاب واللمة</p>
+                    <div class="price-box">
+                        <span class="old-price">90 ج.م</span>
+                        <span class="new-price">70 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('علبة 6 صواريخ', 70)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="sale-badge">خصم جبار</span>
+                <img src="https://i.postimg.cc/XJ2TtNDh/IMG-20260205-WA0012.jpg" alt="علبة بابجي">
+                <div class="card-content">
+                    <h3>علبة بابجي (5 صواريخ)</h3>
+                    <p>صوت وقوة وجودة</p>
+                    <div class="price-box">
+                        <span class="old-price">60 ج.م</span>
+                        <span class="new-price">45 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('علبة بابجي 5', 45)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="sale-badge">جملة</span>
+                <img src="https://i.postimg.cc/zGr8CvZq/IMG-20260205-WA0013.jpg" alt="Black Cat">
+                <div class="card-content">
+                    <h3>كرتونة Black Cat</h3>
+                    <p>تحتوي على 10 علب كاملة</p>
+                    <div class="price-box">
+                        <span class="new-price">سعر خاص</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('كرتونة Black Cat', 'سعر خاص')">اسأل عن السعر <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="sale-badge">وفر 20 جنيه</span>
+                <img src="https://i.postimg.cc/7ZYQrrS2/IMG-20260205-WA0017.jpg" alt="Skull King">
+                <div class="card-content">
+                    <h3>كرتونة Skull King</h3>
+                    <p>10 علب - للجملة والتجار</p>
+                    <div class="price-box">
+                        <span class="old-price">120 ج.م</span>
+                        <span class="new-price">100 ج.م</span>
+                    </div>
+                    <button class="buy-btn" onclick="order('كرتونة Skull King', 100)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
+            <div class="card" style="border-color: var(--accent);">
+                <span class="sale-badge" style="background: var(--primary); color: #000;">عرض الموسم</span>
+                <img src="https://i.postimg.cc/WpwnNfN2/IMG-20260205-WA0015.jpg" alt="عرض الميكس">
+                <div class="card-content">
+                    <h3>عرض ميكس العظمة</h3>
+                    <p>خرطوشة كينج + بابجي + ميمو</p>
+                    <div class="price-box">
+                        <span class="old-price">330 ج.م</span>
+                        <span class="new-price">250 ج.م</span>
+                    </div>
+                    <button class="buy-btn" style="background: var(--primary); color: #000;" onclick="order('عرض الميكس الكبير', 250)">اطلب العرض <i class="fa-brands fa-whatsapp"></i></button>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <footer>
-        <p>كل سنة وأنتم طيبين - صواريخ معاذ 2024 ©</p>
-        <p style="color: #777; font-size: 0.9rem; margin-top: 10px;">⚠️ تنبيه: استخدام الألعاب النارية مسؤولية المستخدم</p>
+        <p>صواريخ معاذ - 2024 ©</p>
     </footer>
 
     <script>
-        function orderWhatsApp(productName, price) {
-            // -------------------------------------------------------
-            // هام جداً: غير الرقم ده برقم تليفونك (مفتاح الدولة 20 لمصر)
-            let phoneNumber = "201000000000"; 
-            // -------------------------------------------------------
+        function order(product, price) {
+            // ==========================================
+            // اكتب رقم تليفونك هنا (شيل الأصفار وحط رقمك)
+            let phone = "201000000000"; 
+            // ==========================================
             
-            let message = `سلام عليكم يا معاذ، عايز أطلب *${productName}* بسعر ${price} جنيه.`;
-            
-            // تحويل الرسالة لرابط واتساب
-            let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            // فتح الرابط في نافذة جديدة
-            window.open(url, '_blank');
+            let msg = `سلام يا معاذ، عايز أطلب *${product}* بسعر ${price} جنيه.`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
