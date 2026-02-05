@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صواريخ الزوز | ملوك الأكشن</title>
+    <title>صواريخ الزوز | جملة وقطاعي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -12,7 +12,7 @@
             --primary: #FFD700; /* ذهبي */
             --accent: #FF3300; /* أحمر ناري فاقع */
             --bg-dark: #0a0000; /* أسود محمر */
-            --bg-fire: linear-gradient(45deg, #1a0000, #330000); /* خلفية نارية خفيفة */
+            --bg-fire: linear-gradient(45deg, #1a0000, #330000); 
             --card-bg: #1a0505;
             --text: #ffffff;
         }
@@ -34,39 +34,56 @@
             box-shadow: 0 0 25px rgba(255, 51, 0, 0.3);
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-        /* تعديل اللوجو */
         .logo { font-size: 1.6rem; font-weight: 900; color: var(--primary); display: flex; align-items: center; gap: 10px; }
         .logo i { color: var(--accent); font-size: 2rem; filter: drop-shadow(0 0 5px var(--accent)); }
 
         /* الهيرو (الواجهة الرئيسية) */
         .hero {
-            min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+            min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
             background: radial-gradient(circle at center, #4a0000 0%, #0a0000 80%);
             padding-top: 100px; padding-bottom: 40px;
         }
         .hero h1 { font-size: 3.2rem; margin-bottom: 15px; text-shadow: 0 0 25px rgba(255, 51, 0, 0.8); line-height: 1.3; }
         .hero h1 span { color: var(--primary); }
-        .hero p { font-size: 1.3rem; color: #ccc; margin-bottom: 40px; max-width: 600px; }
+        .hero p { font-size: 1.3rem; color: #ccc; margin-bottom: 30px; max-width: 600px; }
 
-        /* أزرار الهيرو الجديدة */
-        .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        /* أزرار الهيرو */
+        .hero-btns { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
         .cta-btn {
             padding: 12px 35px; font-size: 1.1rem; font-weight: bold;
             border-radius: 50px; text-decoration: none; transition: 0.3s; display: inline-flex;
             align-items: center; gap: 10px; cursor: pointer;
         }
-        /* الزرار الرئيسي (العروض) */
         .main-btn {
             background: var(--accent); color: white; border: none;
             box-shadow: 0 0 20px rgba(255, 51, 0, 0.5);
         }
         .main-btn:hover { transform: translateY(-5px); background: #ff1100; box-shadow: 0 0 30px rgba(255, 51, 0, 0.8); }
-        /* الزرار الثانوي (العنوان) */
         .secondary-btn {
             background: transparent; color: var(--primary); border: 2px solid var(--accent);
         }
         .secondary-btn:hover { background: var(--accent); color: white; transform: translateY(-5px); }
 
+        /* شريط التوصيل الجديد */
+        .shipping-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--primary);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: glow 2s infinite alternate;
+        }
+        .shipping-box i { color: var(--accent); font-size: 1.5rem; }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 5px var(--primary); }
+            to { box-shadow: 0 0 20px var(--primary); }
+        }
 
         /* المنتجات */
         .products { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
@@ -75,14 +92,14 @@
             text-shadow: 0 0 10px var(--accent);
             position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
         }
-        /* خط ناري تحت العنوان */
         .section-title::after {
             content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
             width: 80px; height: 3px; background: var(--accent); box-shadow: 0 0 10px var(--accent);
         }
         
         .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+            justify-content: center;
         }
 
         .card {
@@ -92,7 +109,6 @@
         }
         .card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 10px 25px rgba(255, 51, 0, 0.2); }
 
-        /* بادج الخصم */
         .sale-badge {
             position: absolute; top: 10px; left: 10px;
             background: var(--accent); color: white; padding: 5px 10px;
@@ -100,31 +116,26 @@
             box-shadow: 0 0 10px var(--accent);
         }
 
-        .card img { width: 100%; height: 280px; object-fit: cover; border-bottom: 2px solid rgba(255, 51, 0, 0.1); }
+        .card img { width: 100%; height: 300px; object-fit: cover; border-bottom: 2px solid rgba(255, 51, 0, 0.1); }
 
-        .card-content { padding: 15px; text-align: center; }
-        .card h3 { font-size: 1.3rem; margin-bottom: 5px; color: var(--primary); }
-        .card p { font-size: 0.9rem; color: #bbb; margin-bottom: 10px; min-height: 40px;}
+        .card-content { padding: 20px; text-align: center; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 5px; color: var(--primary); }
+        .card p { font-size: 1rem; color: #bbb; margin-bottom: 15px; }
 
-        /* تنسيق السعر */
-        .price-box { margin: 10px 0; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .old-price { text-decoration: line-through; color: #777; font-size: 1rem; }
-        .new-price { color: var(--accent); font-size: 1.7rem; font-weight: 900; text-shadow: 0 0 5px rgba(255, 51, 0, 0.3); }
+        .price-box { margin: 15px 0; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .old-price { text-decoration: line-through; color: #777; font-size: 1.1rem; }
+        .new-price { color: var(--accent); font-size: 1.8rem; font-weight: 900; text-shadow: 0 0 5px rgba(255, 51, 0, 0.3); }
 
         .buy-btn {
-            background: transparent; border: 2px solid var(--accent); color: var(--accent);
-            padding: 10px 0; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;
-            transition: 0.3s; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 8px;
+            background: var(--accent); color: white; border: none;
+            padding: 12px 0; border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;
+            transition: 0.3s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .buy-btn:hover { background: var(--accent); color: white; box-shadow: 0 0 15px var(--accent); }
+        .buy-btn:hover { background: #ff1100; box-shadow: 0 0 20px var(--accent); }
 
         /* الفوتر والعنوان */
         footer { 
-            text-align: center; 
-            padding: 50px 20px; 
-            background: #0a0000; 
-            margin-top: 60px; 
-            color: #777; 
+            text-align: center; padding: 50px 20px; background: #0a0000; margin-top: 60px; color: #777; 
             border-top: 3px solid var(--accent);
             background-image: linear-gradient(to top, #1a0000, #0a0000);
         }
@@ -147,11 +158,9 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 51, 0, 0); }
         }
 
-        /* تحسينات للموبايل */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            .cta-btn { padding: 10px 25px; font-size: 1rem; }
-            .section-title { font-size: 2rem; }
+            .shipping-box { font-size: 1rem; padding: 10px 15px; }
         }
 
     </style>
@@ -169,7 +178,7 @@
 
     <section class="hero">
         <h1>أقوى صواريخ في مصر<br><span>في رمضان</span></h1>
-        <p>ملوك الأكشن والأسعار التنافسية.. الزوز وصل يا بشر 💣</p>
+        <p>ملوك الأكشن والجملة.. الزوز وصل يا بشر 💣</p>
         
         <div class="hero-btns">
             <a href="#products" class="cta-btn main-btn">
@@ -179,122 +188,16 @@
                 عنوان المحل <i class="fa-solid fa-map-location-dot"></i>
             </a>
         </div>
+
+        <div class="shipping-box">
+            <i class="fa-solid fa-truck-fast"></i>
+            توصيل لأي مكان في الجيزة بـ 70ج
+        </div>
     </section>
 
     <section id="products" class="products">
-        <h2 class="section-title">عروض الضرب والهرب 🔥</h2>
+        <h2 class="section-title">عروض الكميات والجملة 📦</h2>
         <div class="grid">
-
-            <div class="card">
-                <span class="sale-badge">خصم 20%</span>
-                <img src="https://i.postimg.cc/SKS1qF8x/IMG-20260205-WA0004.jpg" alt="صاروخ بابجي">
-                <div class="card-content">
-                    <h3>صاروخ بابجي</h3>
-                    <p>صوت عالي جداً لمحبي الأكشن</p>
-                    <div class="price-box">
-                        <span class="old-price">10 ج.م</span>
-                        <span class="new-price">8 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('صاروخ بابجي', 8)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">سعر لقطة</span>
-                <img src="https://i.postimg.cc/SxD76XXB/IMG-20260205-WA0005.jpg" alt="KO 24">
-                <div class="card-content">
-                    <h3>صاروخ KO 24</h3>
-                    <p>الصاروخ الشعبي الأول</p>
-                    <div class="price-box">
-                        <span class="new-price">5 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('صاروخ KO 24', 5)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">وفر 2 جنيه</span>
-                <img src="https://i.postimg.cc/ry14Gd3g/IMG-20260205-WA0009.jpg" alt="صاروخ Boom">
-                <div class="card-content">
-                    <h3>صاروخ BOOM</h3>
-                    <p>انفجار قوي وصوت مميز</p>
-                    <div class="price-box">
-                        <span class="old-price">10 ج.م</span>
-                        <span class="new-price">8 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('صاروخ BOOM', 8)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">عرض خاص</span>
-                <img src="https://i.postimg.cc/VvmdZR25/IMG-20260205-WA0008.jpg" alt="صاروخ حجاب">
-                <div class="card-content">
-                    <h3>صاروخ حجاب</h3>
-                    <p>مثلثات الرعب - 4 قطع</p>
-                    <div class="price-box">
-                        <span class="old-price">5 ج.م</span>
-                        <span class="new-price">4 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('صاروخ حجاب', 4)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">الأكثر مبيعاً</span>
-                <img src="https://i.postimg.cc/xCydmm8v/IMG-20260205-WA0007.jpg" alt="صاروخ النووي">
-                <div class="card-content">
-                    <h3>صاروخ النووي</h3>
-                    <p>للأماكن المفتوحة فقط! دمار</p>
-                    <div class="price-box">
-                        <span class="old-price">15 ج.م</span>
-                        <span class="new-price">12 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('صاروخ النووي', 12)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">عرض</span>
-                <img src="https://i.postimg.cc/3JwwydTp/IMG-20260205-WA0006.jpg" alt="Love Pik">
-                <div class="card-content">
-                    <h3>صاروخ Love Pik</h3>
-                    <p>صغير بس يحير</p>
-                    <div class="price-box">
-                        <span class="old-price">5 ج.م</span>
-                        <span class="new-price">4 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('صاروخ Love Pik', 4)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">وفر 20 جنيه</span>
-                <img src="https://i.postimg.cc/QMgDY3DK/IMG-20260205-WA0011.jpg" alt="عرض علبة 6">
-                <div class="card-content">
-                    <h3>علبة التوفير (6 صواريخ)</h3>
-                    <p>عرض الصحاب واللمة</p>
-                    <div class="price-box">
-                        <span class="old-price">90 ج.م</span>
-                        <span class="new-price">70 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('علبة 6 صواريخ', 70)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
-            <div class="card">
-                <span class="sale-badge">خصم جبار</span>
-                <img src="https://i.postimg.cc/XJ2TtNDh/IMG-20260205-WA0012.jpg" alt="علبة بابجي">
-                <div class="card-content">
-                    <h3>علبة بابجي (5 صواريخ)</h3>
-                    <p>صوت وقوة وجودة</p>
-                    <div class="price-box">
-                        <span class="old-price">60 ج.م</span>
-                        <span class="new-price">45 ج.م</span>
-                    </div>
-                    <button class="buy-btn" onclick="order('علبة بابجي 5', 45)">اطلب الآن <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
 
             <div class="card">
                 <span class="sale-badge">جملة</span>
@@ -323,20 +226,6 @@
                 </div>
             </div>
 
-            <div class="card" style="border-color: var(--accent); box-shadow: 0 0 15px var(--accent);">
-                <span class="sale-badge" style="background: var(--primary); color: #000; box-shadow: none;">عرض الموسم</span>
-                <img src="https://i.postimg.cc/WpwnNfN2/IMG-20260205-WA0015.jpg" alt="عرض الميكس">
-                <div class="card-content">
-                    <h3>عرض ميكس الزوز</h3>
-                    <p>خرطوشة كينج + بابجي + ميمو</p>
-                    <div class="price-box">
-                        <span class="old-price">330 ج.م</span>
-                        <span class="new-price" style="font-size: 2rem;">250 ج.م</span>
-                    </div>
-                    <button class="buy-btn" style="background: var(--accent); color: white;" onclick="order('عرض الميكس الكبير', 250)">اطلب العرض <i class="fa-brands fa-whatsapp"></i></button>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -352,15 +241,11 @@
 
     <script>
         function order(product, price) {
-            // ==========================================
-            // تم تحديث الرقم بناءً على طلبك
             let phone = "201114673080"; 
-            // ==========================================
-            
             let msg = `السلام عليكم يا زوز، عايز أطلب *${product}* بسعر ${price} جنيه.`;
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
-                        </html>
-                        
+        </html>
+    
