@@ -87,7 +87,34 @@
         }
         .buy-btn:hover { background: var(--primary); color: #000; }
 
-        footer { text-align: center; padding: 30px; background: #050510; margin-top: 40px; color: #777; }
+        /* الفوتر والعنوان */
+        footer { 
+            text-align: center; 
+            padding: 40px 20px; 
+            background: #050510; 
+            margin-top: 40px; 
+            color: #777; 
+            border-top: 1px solid #333;
+        }
+        
+        .address-box {
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .address-box i { color: var(--accent); font-size: 1.5rem; animation: bounce 2s infinite;}
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
     </style>
 </head>
 <body>
@@ -267,6 +294,10 @@
     </section>
 
     <footer>
+        <div class="address-box">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>شارع الروبي - ترسا - الطالبية</span>
+        </div>
         <p>صواريخ معاذ - 2024 ©</p>
     </footer>
 
@@ -274,12 +305,13 @@
         function order(product, price) {
             // ==========================================
             // رقمك متسجل هنا (مفتاح مصر 20 موجود)
-            let phone = "201114673080"; 
+            let phone = "201114672635"; 
             // ==========================================
             
-            let msg = `سلام يا معاذ، عايز أطلب *${product}* بسعر ${price} جنيه.`;
+            let msg = `السلام عليكم يا معاذ، عايز أطلب *${product}* بسعر ${price} جنيه.`;
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
-</html>
+    </html>
+    
