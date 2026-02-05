@@ -41,7 +41,6 @@
         /* الهيرو (الواجهة الرئيسية) */
         .hero {
             min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            /* خلفية نارية أقوى في الهيرو */
             background: radial-gradient(circle at center, #4a0000 0%, #0a0000 80%);
             padding-top: 100px; padding-bottom: 40px;
         }
@@ -127,7 +126,6 @@
             margin-top: 60px; 
             color: #777; 
             border-top: 3px solid var(--accent);
-            /* خلفية نارية للفوتر */
             background-image: linear-gradient(to top, #1a0000, #0a0000);
         }
         
@@ -170,7 +168,7 @@
     </header>
 
     <section class="hero">
-        <h1>أقوى صواريخ في مصر..<br><span>فرحتك تبدأ هنا!</span></h1>
+        <h1>أقوى صواريخ في مصر<br><span>في رمضان</span></h1>
         <p>ملوك الأكشن والأسعار التنافسية.. الزوز وصل يا بشر 💣</p>
         
         <div class="hero-btns">
@@ -355,15 +353,14 @@
     <script>
         function order(product, price) {
             // ==========================================
-            // رقمك متسجل هنا
-            let phone = "201114672635"; 
+            // تم تحديث الرقم بناءً على طلبك
+            let phone = "201114673080"; 
             // ==========================================
             
-            // تم تعديل الاسم في الرسالة لـ "الزوز"
             let msg = `السلام عليكم يا زوز، عايز أطلب *${product}* بسعر ${price} جنيه.`;
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
-    </html>
-                    
+                        </html>
+                        
